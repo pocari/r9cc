@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'r9cc'
+
+main = R9cc::Main.new
+main.run(ARGV)
+puts main.out.string
