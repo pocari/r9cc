@@ -13,6 +13,10 @@ RSpec.describe R9cc do
     expect(execute_status('42')).to eq(42)
   end
 
+  it "+-で計算できること" do
+    expect(execute_status('5+20-4')).to eq(21)
+  end
+
   def execute_status(code)
     compile_and_exec_with_gcc(code)
   end
