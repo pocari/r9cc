@@ -11,14 +11,13 @@ module R9cc
       @out = StringIO.new
     end
 
-    def error_exit(msg)
-      warn(msg)
-      exit(1)
+    def error(msg)
+      raise msg
     end
 
     def run(argv)
       if argv.size != 1
-        error_exit("Usage: r9cc <coce>")
+        error("Usage: r9cc <coce>")
       end
 
       ss = StringScanner.new(argv[0])
@@ -40,7 +39,7 @@ module R9cc
           raise 'expected number but not number.' unless ss.scan(/\d+/)
           @out.puts("  sub rax, #{ss.matched}")
         else
-          error_exit("unexpected character: #{op}")
+          error("unexpected character: #{op}")
         end
       end
 
