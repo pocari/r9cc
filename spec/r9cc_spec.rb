@@ -17,6 +17,10 @@ RSpec.describe R9cc do
     expect(execute_status('5+20-4')).to eq(21)
   end
 
+  it "+-で計算できること(空白無視)" do
+    expect(execute_status('12 + 34 - 5')).to eq(41)
+  end
+
   def execute_status(code)
     compile_and_exec_with_gcc(code)
   end
